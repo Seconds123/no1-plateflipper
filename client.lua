@@ -146,6 +146,7 @@ RegisterNetEvent('no1-plateflipper:InstallPlateFlipper', function()
         TriggerServerEvent('no1-plateflipper:SetVehicleDoorsLocked', NetworkGetNetworkIdFromEntity(vehicle), 1)
     else
         lib.notify({ type = 'error', description = "Cancelled."})
+        TriggerServerEvent('no1-plateflipper:SetVehicleDoorsLocked', NetworkGetNetworkIdFromEntity(vehicle), 1)
     end
 end)
 
