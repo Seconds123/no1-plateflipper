@@ -12,8 +12,9 @@
 
 ## Extra Information
 
+# Item to be added to the inventory.
+
 # ox_inventory
-# Item to add to `ox_inventory/data/items.lua` 
 ["plateflipper"] = {
 	label = "Plate Flipper",
 	weight = 1000,
@@ -21,6 +22,5 @@
 	close = true,
 },
 
-# Item to add to `qb-core/shared/items.lua` 
 # qb-inventory
 plateflipper                 = { name = 'plateflipper', label = 'Plate Flipper', weight = 1000, type = 'item', image = 'plateflipper.png', unique = true, useable = true, shouldClose = true, combinable = nil, description = '...'}
