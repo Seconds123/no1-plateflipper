@@ -1,0 +1,1 @@
+ALTER TABLE owned_vehicles ADD flipped_installed tinyint(1) DEFAULT 0;
