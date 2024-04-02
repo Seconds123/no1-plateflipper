@@ -10,6 +10,11 @@
 # Dependencies
 - ox_lib
 
+## Exports
+
+# isPlateHidden(vehicle)
+Returns if the vehicle plate is hidden.
+
 ## Extra Information
 
 # Item to be added to the inventory.
