@@ -1,1 +1,1 @@
-ALTER TABLE player_vehicles ADD flipped_installed tinyint(1) DEFAULT 0;
+ALTER TABLE player_vehicles ADD flipper_installed tinyint(1) DEFAULT 0;
