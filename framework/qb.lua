@@ -18,6 +18,10 @@ if IsDuplicityVersion() then
         local isOwned = MySQL.scalar.await('SELECT 1 FROM ' .. VEHICLE_TABLE .. ' WHERE plate = ?', { plate })
         return isOwned and true or false
     end
+
+    function GetItem(itemName)
+        return QBCore.Shared.Items[itemName]
+    end
 else
     function GetPlayerJob()
         return QBCore.Functions.GetPlayerData().job.name or 'unemployed'

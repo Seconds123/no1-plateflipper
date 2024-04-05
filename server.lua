@@ -36,6 +36,8 @@ end)
 
 -- Job Check Function --
 function HasWhitelistedJob(playerId) 
+    if not Config.UseJobCheck then return true end
+
     local jobName = GetPlayerJob(playerId)
     local hasJob = false
 
@@ -95,5 +97,9 @@ RegisterNetEvent('no1-plateflipper:TogglePlate', function(netid, state)
 end)
 
 RegisterUseableItem('plateflipper', function(source, item)
-    TriggerClientEvent('no1-plateflipper:InstallPlateFlipper', source)
+    if HasWhitelistedJob(source) then
+        TriggerClientEvent('no1-plateflipper:InstallPlateFlipper', source)
+    else
+        TriggerClientEvent('no1-plateflipper:notify', source, { type = 'error', description = "You do not have the required job to install the plate flipper!"})
+    end
 end)

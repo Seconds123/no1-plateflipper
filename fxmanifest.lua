@@ -3,7 +3,7 @@ game 'gta5'
 
 author 'PlayerNo1'
 description 'Stealth plate flipper script'
-version '1.0.0'
+version '1.0.2'
 
 shared_scripts {
     '@ox_lib/init.lua',
