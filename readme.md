@@ -15,6 +15,48 @@
 # isPlateHidden(vehicle)
 Returns if the vehicle plate is hidden.
 
+# Wraith ARS 2X Integration
+
+1. Find line 270
+```lua
+if ( self:GetPlate( cam ) ~= plate ) thenif ( self:GetPlate( cam ) ~= plate ) then
+```
+
+2. Replace line 270 to 297 with the code below
+
+```lua
+						if ( index ~= 5 ) then
+							if ( self:GetPlate( cam ) ~= plate ) then
+								-- Set the plate for the current reader
+								self:SetPlate( cam, plate )
+
+								-- Set the plate index for the current reader
+								self:SetIndex( cam, index )
+
+								-- Automatically lock the plate if the scanned plate matches the BOLO
+								if ( plate == self:GetBoloPlate() ) then
+									self:LockCam( cam, false, true )
+
+									SYNC:LockReaderCam( cam, READER:GetCameraDataPacket( cam ) )
+								end
+
+								-- Send the plate information to the NUI side to update the UI
+								SendNUIMessage( { _type = "changePlate", cam = cam, plate = plate, index = index } )
+
+								-- If we use Sonoran CAD, reduce the plate events to just player's vehicle, otherwise life as normal
+								if ( ( CONFIG.use_sonorancad and ( UTIL:IsPlayerInVeh( veh ) or IsVehiclePreviouslyOwnedByPlayer( veh ) ) and GetVehicleClass( veh ) ~= 18 ) or not CONFIG.use_sonorancad ) then
+									-- Trigger the event so developers can hook into the scanner every time a plate is scanned
+									TriggerServerEvent( "wk:onPlateScanned", cam, plate, index )
+							end
+						end
+					end
+				end
+			end
+		end
+	end
+end
+```
+
 ## Extra Information
 
 # Item to be added to the inventory.
